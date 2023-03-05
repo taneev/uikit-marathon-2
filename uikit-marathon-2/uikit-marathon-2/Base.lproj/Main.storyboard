@@ -16,17 +16,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qf-UY-Hqm" userLabel="Button 1">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1qf-UY-Hqm" userLabel="Button 1" customClass="AnimatedButton" customModule="uikit_marathon_2" customModuleProvider="target">
                                 <rect key="frame" x="153" y="88" width="87" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button 1"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lS-7Q-0Nh" userLabel="Button 2">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2lS-7Q-0Nh" userLabel="Button 2" customClass="AnimatedButton" customModule="uikit_marathon_2" customModuleProvider="target">
                                 <rect key="frame" x="152" y="143" width="89" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button 2"/>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjO-SF-LBr" userLabel="Button 3">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mjO-SF-LBr" userLabel="Button 3" customClass="AnimatedButton" customModule="uikit_marathon_2" customModuleProvider="target">
                                 <rect key="frame" x="151.66666666666666" y="198" width="90" height="35"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="filled" title="Button 3"/>
@@ -44,9 +44,9 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="button1" destination="1qf-UY-Hqm" id="RNg-Zu-kEg"/>
-                        <outlet property="button2" destination="2lS-7Q-0Nh" id="uBX-58-Rks"/>
-                        <outlet property="button3" destination="mjO-SF-LBr" id="cyZ-ns-1oX"/>
+                        <outlet property="button1" destination="1qf-UY-Hqm" id="4cH-W1-766"/>
+                        <outlet property="button2" destination="2lS-7Q-0Nh" id="Uc1-2n-W8b"/>
+                        <outlet property="button3" destination="mjO-SF-LBr" id="dWY-fe-3ji"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

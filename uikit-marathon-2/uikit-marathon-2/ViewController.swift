@@ -2,16 +2,16 @@
 //  ViewController.swift
 //  uikit-marathon-2
 //
-//  Created by Тимур Танеев on 04.03.2023.
+//  Created by Timur Taneev on 04.03.2023.
 //
 
 import UIKit
 
 class ViewController: UIViewController {
     
-    @IBOutlet private weak var button1: UIButton!
-    @IBOutlet private weak var button2: UIButton!
-    @IBOutlet private weak var button3: UIButton!
+    @IBOutlet private weak var button1: AnimatedButton!
+    @IBOutlet private weak var button2: AnimatedButton!
+    @IBOutlet private weak var button3: AnimatedButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,13 +22,64 @@ class ViewController: UIViewController {
             "First": button1,
             "Second Long Titled Button": button2,
             "Third button": button3
-        ].forEach{
-            configAnimatedButton(button: $0.value, title:$0.key)
+        ].forEach{(title: String, button: AnimatedButton) in
+            // конфигурация кнопок
+            button.configAnimatedButton(title:title)
+            // Добавляем обработчики нажатий
+            button.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
+            button.addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
         }
+        button3.presentView = true // Включаем показ контроллера для третьей кнопки
+    }
 
+    @objc func buttonTouchDown(sender: AnimatedButton) {
+        sender.buttonAnimationDown()
     }
     
-    private func configAnimatedButton(button: UIButton, title: String) {
+    @objc func buttonTouchUpInside(sender: AnimatedButton) {
+        sender.buttonAnimationBack()
+        // Показываем модальный контроллер
+        if sender.presentView {
+            let newViewController = NewViewController()
+            newViewController.view.backgroundColor = .white
+            self.present(newViewController, animated: true)
+        }
+    }
+    
+}
+
+class NewViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
+}
+
+
+class AnimatedButton: UIButton {
+    
+    var presentView: Bool = false
+
+    func buttonAnimationDown() {
+        // Анимация уменьшения размера кнопки, взаимодействие с кнопкой разрешено
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            options: .allowUserInteraction,
+            animations: {self.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)}
+        )
+    }
+    
+    func buttonAnimationBack() {
+        // Анимация возвращения размера кнопки в исходное состояние, взаимодействие с кнопкой разрешено
+        UIView.animate(
+            withDuration: 0.2,
+            delay: 0,
+            options: .allowUserInteraction,
+            animations: {self.transform = CGAffineTransform.identity}
+        )
+    }
+    
+    func configAnimatedButton(title: String) {
         var buttonConfiguration = UIButton.Configuration.filled()
         buttonConfiguration.baseBackgroundColor = .systemBlue
         // Текст + иконка
@@ -44,38 +95,6 @@ class ViewController: UIViewController {
             leading: 14,
             bottom: 10,
             trailing: 14)
-        button.configuration = buttonConfiguration
-        
-        // Добавляем обработчики нажатий
-        button.addTarget(self, action: #selector(buttonTouchDown), for: .touchDown)
-        button.addTarget(self, action: #selector(buttonTouchUpInside), for: .touchUpInside)
+        self.configuration = buttonConfiguration
     }
-    
-    @objc func buttonTouchDown(sender: UIButton) {
-        // Анимация уменьшения размера кнопки, взаимодействие с кнопкой разрешено
-        UIView.animate(
-            withDuration: 0.2,
-            delay: 0,
-            options: .allowUserInteraction,
-            animations: {sender.transform = CGAffineTransform(scaleX: 0.94, y: 0.94)}
-        )
-    }
-    
-    @objc func buttonTouchUpInside(sender: UIButton) {
-        // Анимация возвращения размера кнопки в исходное состояние, взаимодействие с кнопкой разрешено
-        UIView.animate(
-            withDuration: 0.2,
-            delay: 0,
-            options: .allowUserInteraction,
-            animations: {sender.transform = CGAffineTransform.identity}
-        )
-    }
-    
 }
-
-//class AnimatedButton: UIButton {
-
-//    func configAnimatedButton(title: String) {
-
-//    }
-//}
